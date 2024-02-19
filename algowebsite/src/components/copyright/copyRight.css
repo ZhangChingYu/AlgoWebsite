@@ -1,0 +1,13 @@
+.copyright {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
+}
+
+.copyright p {
+    font-size: 14px;
+    font-family: var(--font-en);
+}

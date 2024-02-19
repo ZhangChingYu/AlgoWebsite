@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Noto+Sans+TC:wght@100..900&display=swap');
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  
+  color: black;
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+
+  --font-en: "Alatsi", sans-serif;
+  --font-zn: "Noto Sans TC", sans-serif;
+
+  --color-darkpurple: #580C82;
+  --color-darkpurple-2: #621E88;
+  --color-darkpurple-3: #A578BE;
+  --color-darkpurple-4: #E2D1EB;
+
+  --color-lightpurple: #8F30A1;
+  --color-lightpurple-2: #984BA7;
+  --color-lightpurple-3: #AB78B5;
+  --color-lightpurple-4: #E8C9EE;
+
+  --color-red: #FE4773;
+  --color-red-2: #FF6F91;
+  --color-red-3: #FF8BA7;
+  --color-red-4: #FFDDE5;
+
+  --color-yellow: #F6D68D;
+  --color-yellow-2: #F3DDAA;
+  --color-yellow-3: #FAEAC5;
+  --color-yellow-4: #FFFBF1;
+
+  --color-green: #46B3A5;
+  --color-green-2: #54C1B3;
+  --color-green-3: #73D0C4;
+  --color-green-4: #D8FFFA;
+
+  --color-blue: #2E6D92;
+  --color-blue-2: #457A99;
+  --color-blue-3: #6697B4;
+  --color-blue-4: #CBE4F3;
+}
+
