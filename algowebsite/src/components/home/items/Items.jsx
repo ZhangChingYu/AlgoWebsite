@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./items.css";
+import { useNavigate } from 'react-router-dom';
+import { Player } from '@lottiefiles/react-lottie-player';
 
+ 
 const Items = ({data}) => {
+    const navigator = useNavigate();
     const [language, setLanguage] = useState(true);
 
     function colors(index) {
@@ -22,15 +26,16 @@ const Items = ({data}) => {
         }
     }
 
-    const ItemElem = ({en_title, zn_title, index}) => {
+    const ItemElem = ({en_title, zn_title, index, filename}) => {
         const color = colors(index);
         return (
             <div className="home_item" style={{backgroundColor:`var(${color.two})`}}>
                 <div className="home_item_anim" style={{backgroundColor:`var(${color.one})`}}>
+                    {filename!==undefined&&<Player loop autoplay src={"src/lotties/"+filename}/>}
                 </div>
                 <div className="home_item_title">
-                    <p className="en_font" style={language?{display:"flex"}:{display:"none"}}>{en_title}</p>
-                    <p className="zn_font" style={language?{display:"none"}:{display:"flex"}}>{zn_title}</p>
+                    <p className="en_font" style={language?{display:"flex", fontFamily:"var(--font-en)"}:{display:"none"}}>{en_title}</p>
+                    <p className="zn_font" style={language?{display:"none"}:{display:"flex", fontFamily:"var(--font-zn)"}}>{zn_title}</p>
                 </div>
             </div>
         )
@@ -39,8 +44,8 @@ const Items = ({data}) => {
         <div className="home_items">
             <div className="home_items_wrap">
                 {data!==undefined&&data.map((item, index)=>(
-                    <div>
-                        <ItemElem en_title={item.en} zn_title={item.zn} index={index}/>
+                    <div key={"home_item_wrap_"+index} onClick={()=>{navigator(item.link)}}>
+                        <ItemElem key={"home_item_"+index} en_title={item.en} zn_title={item.zn} index={index} filename={item.filename}/>
                     </div>
                 ))}
             </div>

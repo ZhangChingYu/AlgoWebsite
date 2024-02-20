@@ -1,0 +1,152 @@
+.subpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+}
+
+.subpage_content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subpage_header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+}
+
+.subpage_header h1 {
+    font-family: var(--font-en);
+    font-size: 40px;
+    text-align: center;
+    color: black;
+}
+
+.subpage_body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.subpage_display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    width: 80%;
+    height: 400px;
+}
+
+.subpage_menu {
+    flex: 2;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-red-4);
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.subpage_menu_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: var(--font-en);
+    margin: 10px;
+    cursor: pointer;
+}
+
+.subpage_menu_item:hover {
+    color: var(--color-red-2);
+    scale: 1.02;
+}
+
+.subpage_menu_item:active {
+    scale: 0.95;
+}
+
+.subpage_anim {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background-color: var(--color-yellow-4);
+}
+
+.subpage_intro {
+    flex: 3;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-green-3);
+}
+
+.subpage_interact {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+.array_interact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.subpage_interact_p{
+    font-size: 14px;
+    text-align: center;
+    font-family: var(--font-en);
+    margin-left: 8px;
+}
+
+.subpage input {
+    font-family: var(--font-en);
+    margin-left: 4px;
+    width: 20px;
+    font-size: 14px;
+    line-height: 16px;
+    height: 18px;
+    text-align: center;
+}
+
+.subpage_btn {
+    font-family: var(--font-en);
+    font-size: 12px;
+    margin-left:10px;
+}
+
+.array_intro {
+    margin-top: 100px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 200px;
+}
+
+.array_intro_section {
+    display: flex;
+    flex-direction: column;
+   
+}

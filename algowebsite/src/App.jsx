@@ -1,10 +1,17 @@
-import { useState } from 'react'
-
+import { Home } from "./pages";
+import { ArrayPage } from './pages/subPage';
+import { Routes, Route } from "react-router-dom";
+ 
 import './App.css'
 
 function App() {
   return (
-    <div className='App'></div>
+    <div className='App'>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path="/array" element={<ArrayPage/>} />
+      </Routes>
+    </div>
   )
 }
 

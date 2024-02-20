@@ -1,0 +1,1 @@
+export { default as ArrayPage } from './array/Array';

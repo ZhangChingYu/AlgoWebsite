@@ -4,11 +4,10 @@ import Logo from '../../assets/Logo.jpg'
 import { Items } from "../../components/home";
 import { CopyRight } from "../../components";
 
-var aData = [{en:"Array", zn:"列隊"}, {en:"Linked List", zn:"鏈表"}, {en:"Stacks", zn:"堆棧"}, {en:"Queues", zn:"佇列"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}];
-var dData = [{en:"Array", zn:"列隊"}, {en:"Linked List", zn:"鏈表"}, {en:"Stacks", zn:"堆棧"}, {en:"Queues", zn:"佇列"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}];
+var aData = [{en:"Array", zn:"列隊", link:"array"}, {en:"Linked List", zn:"鏈表"}, {en:"Stacks", zn:"堆棧"}, {en:"Queues", zn:"佇列"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}];
+var dData = [{en:"Array", zn:"列隊", link:"array", filename:"ArrayPre.json"}, {en:"Linked List", zn:"鏈表"}, {en:"Stacks", zn:"堆棧"}, {en:"Queues", zn:"佇列"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}];
 
-const Home = () => {
-    
+const Home = () => { 
     return(
         <div className="home">
             <div className="home_content">
