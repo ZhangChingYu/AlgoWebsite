@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import './array.css';
 import { CopyRight } from '../../../components';
+import Gist from 'react-gist';
 
 
 const Array = () => {
 
     const [state, setState] = useState(0);
+    const [code, setCode] = useState(0);
 
     return(
         <div className="subpage">
@@ -91,7 +93,16 @@ const Array = () => {
                         </div>
                         <div className="array_intro_section">
                             <h1>代碼示例</h1>
-                            <p>提供代碼示例，演示如何創建、訪問和修改Array中的元素。這可以幫助用戶更好地理解。</p>
+                            <p>這裡提供了代碼示例，演示如何創建、訪問和修改Array中的元素。這可以幫助用戶更好地理解。</p>
+                            <div className="language_switcher">
+                                <h3>C</h3>
+                                <h3>C++</h3>
+                                <h3>Java</h3>
+                                <h3>Python</h3>
+                            </div>
+                            <div className="code_holder">
+                                <Gist id="591688d0568f03359f02c3ee207ad0f9"/>
+                            </div>
                         </div>
                         <div className="array_intro_section">
                             <h1>實際應用</h1>

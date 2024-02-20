@@ -148,5 +148,32 @@
 .array_intro_section {
     display: flex;
     flex-direction: column;
-   
+    width: 100%;
+}
+
+.language_switcher{
+    display: flex;
+    flex-direction: row;
+}
+
+.language_switcher h3 {
+    margin-right: 40px;
+    font-family: var(--font-en);
+    cursor: pointer;
+}
+
+.language_switcher h3:hover {
+    color: var(--color-blue);
+}
+
+.language_switcher h3:hover:active{
+    scale: 0.95;
+}
+
+.code_holder {
+   width: 60%;
+   min-width: max-content;
+   align-self: center;
+   max-height: 400px; /* 设置最大高度 */
+   overflow: scroll;
 }
