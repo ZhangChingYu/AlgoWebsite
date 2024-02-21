@@ -14,13 +14,31 @@
     align-items: center;
 }
 
+.goBack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.arrow_back{
+    cursor: pointer;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.arrow_back:hover {
+    scale: 1.05;
+    color:var(--color-red)
+}
+
 .subpage_header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 200px;
+    height: 160px;
 }
 
 .subpage_header h1 {
@@ -164,6 +182,7 @@
 
 .language_switcher h3:hover {
     color: var(--color-blue);
+    scale: 1.05;
 }
 
 .language_switcher h3:hover:active{
@@ -174,6 +193,6 @@
    width: 60%;
    min-width: max-content;
    align-self: center;
-   max-height: 400px; /* 设置最大高度 */
+   height: 400px; /* 设置最大高度 */
    overflow: scroll;
 }

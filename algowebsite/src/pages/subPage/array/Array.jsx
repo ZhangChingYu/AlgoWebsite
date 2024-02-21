@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import './array.css';
 import { CopyRight } from '../../../components';
 import Gist from 'react-gist';
+import { FaArrowLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 
 const Array = () => {
+    const navigator = useNavigate();
 
     const [state, setState] = useState(0);
     const [code, setCode] = useState(0);
@@ -12,6 +15,9 @@ const Array = () => {
     return(
         <div className="subpage">
             <div className="subpage_content">
+                <div className="goBack">
+                    <FaArrowLeft className="arrow_back" size={30} onClick={()=>{navigator("/")}}/>
+                </div>
                 <div className="subpage_header">
                     <h1>Array</h1>
                 </div>
@@ -95,13 +101,16 @@ const Array = () => {
                             <h1>代碼示例</h1>
                             <p>這裡提供了代碼示例，演示如何創建、訪問和修改Array中的元素。這可以幫助用戶更好地理解。</p>
                             <div className="language_switcher">
-                                <h3>C</h3>
-                                <h3>C++</h3>
-                                <h3>Java</h3>
-                                <h3>Python</h3>
+                                <h3 onClick={()=>{setCode(0)}} style={code===0?{color:"var(--color-red)"}:{}}>C</h3>
+                                <h3 onClick={()=>{setCode(1)}} style={code===1?{color:"var(--color-red)"}:{}}>C++</h3>
+                                <h3 onClick={()=>{setCode(2)}} style={code===2?{color:"var(--color-red)"}:{}}>Java</h3>
+                                <h3 onClick={()=>{setCode(3)}} style={code===3?{color:"var(--color-red)"}:{}}>Python</h3>
                             </div>
                             <div className="code_holder">
-                                <Gist id="591688d0568f03359f02c3ee207ad0f9"/>
+                                {code===0&&<Gist id="591688d0568f03359f02c3ee207ad0f9"/>}
+                                {code===1&&<Gist id="120aee98a2635a367e1f508e1c70afca"/>}
+                                {code===2&&<Gist id="477bb0ba05499ecd0df7013f2204824d"/>}
+                                {code===3&&<Gist id="9914ccb51d7d98794f5d2ea7e637e9b6"/>}
                             </div>
                         </div>
                         <div className="array_intro_section">
