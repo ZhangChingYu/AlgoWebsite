@@ -14,8 +14,10 @@ const ArrayPage = () => {
     const [initialEleSize, setInitialEleSize] = useState(4);
     const [insertPos, setInsertPos] = useState(0);
     const [insertVal, setInsertVal] = useState(3);
+    const [removeVal, setRemoveVal] = useState(3);
     // initial list
     const [elemList, setElemList] = useState([12, 3, 7, 93, null, null, null, null]);
+    const [insertFlag, setInsertFlag] = useState(false);
 
 
     const handleCreate = () => {
@@ -40,6 +42,21 @@ const ArrayPage = () => {
                 tempList[initialEleSize] = parseInt(insertVal);
                 setElemList(tempList);
                 setInitialEleSize(initialEleSize+1);
+            }
+        }
+    }
+
+    const handleRemove = () =>{
+
+    }
+
+    const handleInsert = () => {
+        if(insertVal===""){
+            alert("Please input numbers!");
+        }else{
+            if(initialEleSize<initialSize){
+                // start inserting
+                setInsertFlag(true)
             }
         }
     }
@@ -70,7 +87,9 @@ const ArrayPage = () => {
                             <div className="subpage_menu_item" style={state===3?{color:"var(--color-red)"}:{}} onClick={()=>{setState(3)}}>Search Element</div>
                         </div>
                         <div className="subpage_anim" >
-                            <ArrayAnim elemList={elemList}/>
+                            <ArrayAnim elemList={elemList} setElemList={setElemList} elemSize={initialEleSize}
+                            insertVal={insertVal} insertPos={insertPos} setElemSize={setInitialEleSize}
+                            insertFlag={insertFlag} setInsertFlag={setInsertFlag}/>
                         </div>
                         <div className="subpage_intro">
 
@@ -92,13 +111,13 @@ const ArrayPage = () => {
                             <select value={insertPos} style={{marginLeft:"4px"}} onChange={handleInsertOptionChange}>
                                 {insertOptions}
                             </select>
-                            <button className="subpage_btn" onClick={()=>{}}>Insert</button>
+                            <button className="subpage_btn" onClick={handleInsert} disabled={insertFlag}>Insert</button>
                             <button className="subpage_btn" onClick={handleAppend}>Append</button>
                         </div>}
                         {state===2&&<div className="array_interact">
                             <p className="subpage_interact_p">Remove Element: </p>
-                            <input defaultValue={3} type="number"/>
-                            <button className="subpage_btn">Remove</button>
+                            <input defaultValue={removeVal} type="number"/>
+                            <button className="subpage_btn" onClick={handleRemove}>Remove</button>
                         </div>}
                         {state===3&&<div className="array_interact">
                             <p className="subpage_interact_p">Search Element: </p>
