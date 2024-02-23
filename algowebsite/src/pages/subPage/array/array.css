@@ -104,6 +104,7 @@
     align-items: center;
     height: 400px;
     background-color: var(--color-yellow-4);
+    overflow: auto;
 }
 
 .subpage_intro {

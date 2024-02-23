@@ -1,16 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './array.css';
-import { CopyRight } from '../../../components';
+import { CopyRight, ArrayAnim } from '../../../components';
 import Gist from 'react-gist';
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
+var initSize = 8;
+var initEleSize = 4;
 
 const Array = () => {
     const navigator = useNavigate();
 
     const [state, setState] = useState(0);
     const [code, setCode] = useState(0);
+    const [initialSize, setInitialSize] = useState(initSize);
+    const [initialEleSize, setInitialEleSize] = useState(initEleSize);
+    // for anim
+    const [aInitSize, setAInitSize] = useState(initSize);
+    const [elemList, setElemList] = useState([12, 3, 7, 93, null, null, null, null]);
+
+    const handleCreate = () => {
+        const list = [];
+        if(initialSize<initialEleSize){
+            alert("Element Size must not exceeds Array Size!")
+        }else{
+            for (let i = 0; i < initialSize; i++) {
+                list.push(i<initialEleSize?(Math.floor(Math.random() * 100) + 1):null);
+            }
+            setAInitSize(initialSize); 
+            setElemList(list);
+        }
+    }
 
     return(
         <div className="subpage">
@@ -29,8 +49,8 @@ const Array = () => {
                             <div className="subpage_menu_item" style={state===2?{color:"var(--color-red)"}:{}} onClick={()=>{setState(2)}}>Remove Element</div>
                             <div className="subpage_menu_item" style={state===3?{color:"var(--color-red)"}:{}} onClick={()=>{setState(3)}}>Search Element</div>
                         </div>
-                        <div className="subpage_anim">
-
+                        <div className="subpage_anim" >
+                            <ArrayAnim initSize={aInitSize} elemList={elemList}/>
                         </div>
                         <div className="subpage_intro">
 
@@ -39,34 +59,24 @@ const Array = () => {
                     <div className="subpage_interact">
                         {state===0&&<div className="array_interact">
                             <p className="subpage_interact_p">Initial Size: </p>
-                            <input defaultValue={8} />
+                            <input defaultValue={initSize} onChange={(input)=>{setInitialSize(input.target.value)}}/>
                             <p className="subpage_interact_p">Element Size: </p>
-                            <input defaultValue={4} />
-                            <button className="subpage_btn">
-                                Create
-                            </button>
-                            <button className="subpage_btn">
-                                Empty
-                            </button>
+                            <input defaultValue={initEleSize} onChange={(input)=>{setInitialEleSize(input.target.value)}}/>
+                            <button className="subpage_btn" onClick={handleCreate}>Create</button>
+                            <button className="subpage_btn">Empty</button>
                         </div>}
                         {state===1&&<div className="array_interact">
                             <p className="subpage_interact_p">Insert Number: </p>
                             <input defaultValue={3} />
                             <p className="subpage_interact_p">Position: </p>
                             <input defaultValue={0} />
-                            <button className="subpage_btn">
-                                Insert
-                            </button>
-                            <button className="subpage_btn">
-                                Append
-                            </button>
+                            <button className="subpage_btn">Insert</button>
+                            <button className="subpage_btn">Append</button>
                         </div>}
                         {state===2&&<div className="array_interact">
                             <p className="subpage_interact_p">Remove Element: </p>
                             <input defaultValue={3} />
-                            <button className="subpage_btn">
-                                Remove
-                            </button>
+                            <button className="subpage_btn">Remove</button>
                         </div>}
                         {state===3&&<div className="array_interact">
                             <p className="subpage_interact_p">Search Element: </p>

@@ -4,7 +4,7 @@ import Logo from '../../assets/Logo.jpg'
 import { Items } from "../../components/home";
 import { CopyRight } from "../../components";
 
-var dData = [{en:"Array", zn:"列隊", link:"array", filename:"ArrayPre.json"}, {en:"Linked List", zn:"鏈表", filename:"LinkedListPre.json"}, {en:"Stacks", zn:"堆棧", filename:"StackPre.json"}, {en:"Queues", zn:"佇列", filename:"QueuePre.json"}, {en:"Hash Table", zn:"散列表", filename:"HashTablePre.json"}, {en:"Trees", zn:"樹", filename:"TreePre.json"}, {en:"Heaps", zn:"堆", filename:"HeapPre.json"}, {en:"Graph", zn:"圖", filename:"GraphPre.json"}];
+var dData = [{en:"Array", zn:"列隊", link:"array", filename:"ArrayPre.json"}, {en:"Linked List", zn:"鏈表", link:"linkedList", filename:"LinkedListPre.json"}, {en:"Stacks", zn:"堆棧", filename:"StackPre.json"}, {en:"Queues", zn:"佇列", filename:"QueuePre.json"}, {en:"Hash Table", zn:"散列表", filename:"HashTablePre.json"}, {en:"Trees", zn:"樹", filename:"TreePre.json"}, {en:"Heaps", zn:"堆", filename:"HeapPre.json"}, {en:"Graph", zn:"圖", filename:"GraphPre.json"}];
 var aData = [{en:"Array", zn:"列隊", link:"array"}, {en:"Linked List", zn:"鏈表"}, {en:"Stacks", zn:"堆棧"}, {en:"Queues", zn:"佇列"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}, {en:"Heaps", zn:"堆"}];
 
 const Home = () => { 
