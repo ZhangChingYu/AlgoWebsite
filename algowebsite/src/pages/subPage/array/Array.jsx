@@ -14,49 +14,72 @@ const ArrayPage = () => {
     const [initialEleSize, setInitialEleSize] = useState(4);
     const [insertPos, setInsertPos] = useState(0);
     const [insertVal, setInsertVal] = useState(3);
-    const [removeVal, setRemoveVal] = useState(3);
+    const [removeIndex, setRemoveIndex] = useState(0);
     // initial list
     const [elemList, setElemList] = useState([12, 3, 7, 93, null, null, null, null]);
     const [insertFlag, setInsertFlag] = useState(false);
+    const [removeFlag, setRemoveFlag] = useState(false);
 
 
     const handleCreate = () => {
         const list = [];
-        if(initialSize<initialEleSize){
-            setInsertVal(3);
-            alert("Element Size must not exceeds Array Size!")
-        }else{
-            for (let i = 0; i < initialSize; i++) {
-                list.push(i<initialEleSize?(Math.floor(Math.random() * 100) + 1):null);
+        if(initialSize===""||initialEleSize===""){
+            alert("Please input numbers only!");
+        }else {
+            if(initialSize<0||initialEleSize<0){
+                alert("The number you input must not be smaller than 0");
+            }else {
+                if(initialSize<initialEleSize){
+                    alert("Element Size must not exceeds Array Size!")
+                }else{
+                    for (let i = 0; i < initialSize; i++) {
+                        list.push(i<initialEleSize?(Math.floor(Math.random() * 100) + 1):null);
+                    }
+                    setElemList(list);
+                }
             }
-            setElemList(list);
         }
     }
 
     const handleAppend = () => {
         if(insertVal===""){
-            alert("Please input numbers!");
+            alert("Please input numbers only!");
         }else{
             if(initialEleSize<initialSize){
                 const tempList = elemList;
-                tempList[initialEleSize] = parseInt(insertVal);
+                tempList[initialEleSize] = insertVal;
                 setElemList(tempList);
                 setInitialEleSize(initialEleSize+1);
             }
         }
     }
 
-    const handleRemove = () =>{
-
-    }
-
     const handleInsert = () => {
+        if(insertPos<0||insertPos>initialEleSize){
+            alert("Your input index is out of boundary")
+        }
         if(insertVal===""){
-            alert("Please input numbers!");
+            alert("Please input numbers only!");
         }else{
             if(initialEleSize<initialSize){
                 // start inserting
+                setInsertVal(insertVal);
                 setInsertFlag(true)
+            }
+        }
+    }
+
+    const handleRemove = () =>{
+        if(removeIndex===""){
+            alert("Please input numbers only!");
+        }else{
+            if(removeIndex>elemList.length-1||removeIndex<0){
+                alert("Your input index is out of boundary")
+            }else if(removeIndex>initialEleSize-1){
+                alert("Index "+ removeIndex + " is empty");
+            }else{
+                setRemoveIndex(removeIndex);
+                setRemoveFlag(true);
             }
         }
     }
@@ -87,9 +110,9 @@ const ArrayPage = () => {
                             <div className="subpage_menu_item" style={state===3?{color:"var(--color-red)"}:{}} onClick={()=>{setState(3)}}>Search Element</div>
                         </div>
                         <div className="subpage_anim" >
-                            <ArrayAnim elemList={elemList} setElemList={setElemList} elemSize={initialEleSize}
-                            insertVal={insertVal} insertPos={insertPos} setElemSize={setInitialEleSize}
-                            insertFlag={insertFlag} setInsertFlag={setInsertFlag}/>
+                            <ArrayAnim elemList={elemList} setElemList={setElemList} elemSize={initialEleSize} setElemSize={setInitialEleSize}
+                            insertVal={insertVal} insertPos={insertPos} insertFlag={insertFlag} setInsertFlag={setInsertFlag} 
+                            removeIndex={removeIndex} removeFlag={removeFlag} setRemoveFlag={setRemoveFlag}/>
                         </div>
                         <div className="subpage_intro">
 
@@ -98,15 +121,15 @@ const ArrayPage = () => {
                     <div className="subpage_interact">
                         {state===0&&<div className="array_interact">
                             <p className="subpage_interact_p">Initial Size: </p>
-                            <input defaultValue={initialSize} type="number" onChange={(input)=>{setInitialSize(input.target.value)}}/>
+                            <input defaultValue={initialSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialSize(parseInt(input.target.value))}}}/>
                             <p className="subpage_interact_p">Element Size: </p>
-                            <input defaultValue={initialEleSize} type="number" onChange={(input)=>{setInitialEleSize(input.target.value)}}/>
+                            <input defaultValue={initialEleSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialEleSize(parseInt(input.target.value))}}}/>
                             <button className="subpage_btn" onClick={handleCreate}>Create</button>
                             <button className="subpage_btn">Empty</button>
                         </div>}
                         {state===1&&<div className="array_interact">
                             <p className="subpage_interact_p">Insert Number: </p>
-                            <input defaultValue={insertVal} type="number" onChange={(input)=>{setInsertVal(input.target.value)}} />
+                            <input defaultValue={insertVal} type="number" onChange={(input)=>{if(input.target.value!==""){setInsertVal(parseInt(input.target.value))}}} />
                             <p className="subpage_interact_p">Position: </p>
                             <select value={insertPos} style={{marginLeft:"4px"}} onChange={handleInsertOptionChange}>
                                 {insertOptions}
@@ -115,9 +138,9 @@ const ArrayPage = () => {
                             <button className="subpage_btn" onClick={handleAppend}>Append</button>
                         </div>}
                         {state===2&&<div className="array_interact">
-                            <p className="subpage_interact_p">Remove Element: </p>
-                            <input defaultValue={removeVal} type="number"/>
-                            <button className="subpage_btn" onClick={handleRemove}>Remove</button>
+                            <p className="subpage_interact_p">Remove Index: </p>
+                            <input defaultValue={removeIndex} type="number" onChange={(input)=>{if(input.target.value!==""){setRemoveIndex(parseInt(input.target.value))}}}/>
+                            <button className="subpage_btn" onClick={handleRemove} disabled={removeFlag}>Remove</button>
                         </div>}
                         {state===3&&<div className="array_interact">
                             <p className="subpage_interact_p">Search Element: </p>
