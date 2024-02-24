@@ -43,6 +43,14 @@ const ArrayPage = () => {
         }
     }
 
+    const handleEmpty = () => {
+        setInitialEleSize(0);
+        const tempList = elemList;
+        for(let i = 0 ; i < initialEleSize; i++){
+            tempList[i] = null;
+        }
+    }
+
     const handleAppend = () => {
         if(insertVal===""){
             alert("Please input numbers only!");
@@ -136,7 +144,7 @@ const ArrayPage = () => {
                             <p className="subpage_interact_p">Element Size: </p>
                             <input defaultValue={initialEleSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialEleSize(parseInt(input.target.value))}}}/>
                             <button className="subpage_btn" onClick={handleCreate}>Create</button>
-                            <button className="subpage_btn">Empty</button>
+                            <button className="subpage_btn" onClick={handleEmpty}>Empty</button>
                         </div>}
                         {state===1&&<div className="array_interact">
                             <p className="subpage_interact_p">Insert Number: </p>

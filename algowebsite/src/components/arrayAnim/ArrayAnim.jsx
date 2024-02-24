@@ -8,7 +8,8 @@ const ArrayAnim = ({elemList, setElemList, elemSize, setElemSize, insertVal, ins
     const entryAnim = useSpring({from:{opacity:0}, to:{opacity:1}});
     const insertAnim = useSpring({from:{backgroundColor:"var(--color-blue-4)"}, to:{backgroundColor:"var(--color-red-3)"}});
     const removeAnim = useSpring({from:{backgroundColor:"var(--color-blue-4)"}, to:{backgroundColor:"var(--color-red-3)"}});
-    const searchAnim = useSpring({from:{backgroundColor:"var(--color-blue-4)"}, to:{backgroundColor:"var(--color-red-3)"}})
+    const searchAnim = useSpring({from:{backgroundColor:"var(--color-blue-4)"}, to:{backgroundColor:"var(--color-red-3)"}});
+    const defaultAnim = useSpring()
     const [accessIndex, setAccessIndex] = useState();
 
     useEffect(()=>{
@@ -111,9 +112,9 @@ const ArrayAnim = ({elemList, setElemList, elemSize, setElemSize, insertVal, ins
         <div key={"array_ele_"+index} className="array_anim_elem_wrap">
             <animated.div className="array_anim_value" 
             style={{
-                ...(accessIndex === index && insertFlag ? insertAnim : {}),
-                ...(accessIndex === index && removeFlag ? removeAnim : {}),
-                ...(accessIndex === index && searchFlag ? searchAnim : {}),
+                ...(accessIndex === index && insertFlag ? insertAnim : defaultAnim),
+                ...(accessIndex === index && removeFlag ? removeAnim : defaultAnim),
+                ...(accessIndex === index && searchFlag ? searchAnim : defaultAnim),
               }}>
                 {elemList[index]}
             </animated.div>
