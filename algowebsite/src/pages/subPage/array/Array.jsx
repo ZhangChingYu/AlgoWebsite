@@ -15,10 +15,12 @@ const ArrayPage = () => {
     const [insertPos, setInsertPos] = useState(0);
     const [insertVal, setInsertVal] = useState(3);
     const [removeIndex, setRemoveIndex] = useState(0);
+    const [searchVal, setSearchVal] = useState(0);
     // initial list
     const [elemList, setElemList] = useState([12, 3, 7, 93, null, null, null, null]);
     const [insertFlag, setInsertFlag] = useState(false);
     const [removeFlag, setRemoveFlag] = useState(false);
+    const [searchFlag, setSearchFlag] = useState(false);
 
 
     const handleCreate = () => {
@@ -84,6 +86,14 @@ const ArrayPage = () => {
         }
     }
 
+    const handleSearch = () => {
+        if(searchVal===""){
+            alert("Please input numbers only!");
+        }else {
+            setSearchFlag(true);
+        }
+    }
+
     // for insert position
     const insertOptions = Array.from({ length: elemList.length }, (_, index) => (
         <option key={"array_insert_pos_"+index} value={index}>{index}</option>
@@ -112,7 +122,8 @@ const ArrayPage = () => {
                         <div className="subpage_anim" >
                             <ArrayAnim elemList={elemList} setElemList={setElemList} elemSize={initialEleSize} setElemSize={setInitialEleSize}
                             insertVal={insertVal} insertPos={insertPos} insertFlag={insertFlag} setInsertFlag={setInsertFlag} 
-                            removeIndex={removeIndex} removeFlag={removeFlag} setRemoveFlag={setRemoveFlag}/>
+                            removeIndex={removeIndex} removeFlag={removeFlag} setRemoveFlag={setRemoveFlag}
+                            searchVal={searchVal} searchFlag={searchFlag} setSearchFlag={setSearchFlag}/>
                         </div>
                         <div className="subpage_intro">
 
@@ -144,10 +155,8 @@ const ArrayPage = () => {
                         </div>}
                         {state===3&&<div className="array_interact">
                             <p className="subpage_interact_p">Search Element: </p>
-                            <input defaultValue={8} type="number"/>
-                            <button className="subpage_btn">
-                                Search
-                            </button>
+                            <input defaultValue={searchVal} type="number" onChange={(input)=>{if(input.target.value!==""){setSearchVal(parseInt(input.target.value))}}}/>
+                            <button className="subpage_btn" onClick={handleSearch}>Search</button>
                         </div>}
                     </div>
                     <div className="array_intro">
