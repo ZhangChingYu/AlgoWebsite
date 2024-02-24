@@ -23,17 +23,19 @@ const ArrayAnim = ({elemList, setElemList, elemSize, setElemSize, insertVal, ins
                     setSearchFlag(false);
                     alert("Value " + searchVal + " is not in the array");
                     setAccessIndex();
-                }
-                setAccessIndex(count);
-                console.log("Checking index " + (count));
-                if(elemList[count]===searchVal){
-                    // found it and return index
-                    setTimeout(() => {
-                        setAccessIndex();
-                        setSearchFlag(false);
-                        alert("Found " + searchVal + " at index: " + count);
-                    }, 1500);
-                    clearInterval(intervalId);
+                }else{
+                    setAccessIndex(count);
+                    console.log("Checking index " + (count));
+                    if(elemList[count]===searchVal){
+                        // found it and return index
+                        var index = count;
+                        setTimeout(() => {
+                            alert("Found " + searchVal + " at index: " + index);
+                            setSearchFlag(false);
+                            setAccessIndex(undefined);
+                        }, 1500);
+                        clearInterval(intervalId);
+                    }
                 }
                 count++;
             }, 1000);

@@ -4,7 +4,7 @@ import { CopyRight, ArrayAnim } from '../../../components';
 import Gist from 'react-gist';
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { ArrayIntroP } from '../../../components/array';
+import { ArrayIntroP, ArrayEmplP } from '../../../components/array';
 
 const ArrayPage = () => {
     const navigator = useNavigate();
@@ -135,7 +135,10 @@ const ArrayPage = () => {
                             searchVal={searchVal} searchFlag={searchFlag} setSearchFlag={setSearchFlag}/>
                         </div>
                         <div className="subpage_intro">
-                            {state===0&&<p>The array size is 8, which means it can contain </p>}
+                            {state===0&&<p>設定數組的大小為：{initialSize}<br/>填充 {initialEleSize} 個元素<br/><br/>你可以通過左方目錄來對數組進行基本操作：<br/>Insert Element（插入新元素）、Remove Element（移除指定元素）、Search Element（查找某個元素）<br/><br/>而下方操作欄則可以供你自行定義使用：<br/>Initial Size: 設定數組大小<br/>Element Size: 設定數組初始填充的元素，元素職將會隨機生成<br/>Create按鈕: 點擊後將根據當前設定生成數組<br/>Empty按鈕: 點擊後會將數組清空<br/><br/>相信通過觀察數據的操作過程，你能對數組(Array)有更清晰的了解！</p>}
+                            {state===1&&<p>插入操作：<br/><br/>Insert Number: 輸入想插入的數字<br/>Insert Position: 選擇插入位置<br/>Insert按鈕: 點擊該按鈕可進行插入<br/>Append按鈕: 點擊按鈕將會在數組末尾添加新元素<br/><br/>嘗試輸入數字進行插入操作吧！</p>}
+                            {state===2&&<p>移除操作：<br/><br/>Remove Index: 輸入想移除的元素位置（索引值）<br/>Remove按鈕: 點擊該按鈕可進行移除<br/><br/>嘗試輸入數字進行移除操作吧！</p>}
+                            {state===3&&<p>查詢操作：<br/><br/>Search Element: 輸入想查詢的數字<br/>Search按鈕: 點擊該按鈕可進行查詢<br/><br/>若成功找到數字則會返回該數字在數組中的索引值(index)，反之則代表該數字不在數組中<br/><br/>嘗試輸入數字進行移除操作吧！</p>}
                         </div>
                     </div>
                     <div className="subpage_interact">
@@ -165,7 +168,7 @@ const ArrayPage = () => {
                         {state===3&&<div className="array_interact">
                             <p className="subpage_interact_p">Search Element: </p>
                             <input defaultValue={searchVal} type="number" onChange={(input)=>{if(input.target.value!==""){setSearchVal(parseInt(input.target.value))}}}/>
-                            <button className="subpage_btn" onClick={handleSearch}>Search</button>
+                            <button className="subpage_btn" onClick={handleSearch} disabled={searchFlag}>Search</button>
                         </div>}
                     </div>
                     <div className="array_intro">
@@ -174,23 +177,12 @@ const ArrayPage = () => {
                             <ArrayIntroP/>
                         </div>
                         <div className="array_intro_section">
-                            <h1>操作和特性</h1>
-                            <p>Array具有固定的大小，一旦創建，其大小就不能改變。常見的操作包括添加元素、刪除元素、訪問元素等。Array的特性之一是它是一個連續的內存區域，這使得訪問Array中的元素非常高效。</p>
-                            <p>Arrays have a fixed size, once created, their size cannot be changed. Common operations include adding elements, removing elements, and accessing elements. One of the characteristics of an array is that it is a contiguous memory area, which makes accessing elements in the array very efficient.</p>
-                        </div>
-                        <div className="array_intro_section">
-                            <h1>時間複雜度</h1>
-                            <p>訪問或修改元素的時間複雜度是O(1)，因為它可以通過索引直接訪問，而添加或刪除元素的時間複雜度可能是O(n)，因為這可能需要移動其他元素來為新元素腾出空間。</p>
-                            <p>The time complexity for accessing or modifying an element is O(1) because it can be directly accessed by index. The time complexity for adding or removing elements might be O(n) because it may require shifting other elements to make space for the new element.</p>
-                        </div>
-                        <div className="array_intro_section">
                             <h1>應用場景</h1>
-                            <p>Array在編程中有廣泛的應用，特別是在排序算法、搜索算法等方面。它也常被用於數據存儲和處理，例如在圖像處理和音頻處理中。</p>
-                            <p>Arrays are widely used in programming, especially in sorting algorithms, searching algorithms, etc. They are also commonly used for data storage and processing, such as in image processing and audio processing.</p>
+                            <ArrayEmplP/>
                         </div>
                         <div className="array_intro_section">
                             <h1>代碼示例</h1>
-                            <p>這裡提供了代碼示例，演示如何創建、訪問和修改Array中的元素。這可以幫助用戶更好地理解。</p>
+                            <p>這裡提供了代碼示例，演示如何創建、訪問和修改Array中的元素。希望這可以幫助你更好地理解。</p>
                             <div className="language_switcher">
                                 <h3 onClick={()=>{setCode(0)}} style={code===0?{color:"var(--color-red)"}:{}}>C</h3>
                                 <h3 onClick={()=>{setCode(1)}} style={code===1?{color:"var(--color-red)"}:{}}>C++</h3>
@@ -203,11 +195,6 @@ const ArrayPage = () => {
                                 {code===2&&<Gist id="477bb0ba05499ecd0df7013f2204824d" />}
                                 {code===3&&<Gist id="9914ccb51d7d98794f5d2ea7e637e9b6" />}
                             </div>
-                        </div>
-                        <div className="array_intro_section">
-                            <h1>實際應用</h1>
-                            <p>在實際應用中，Array可以用於存儲學生成績、處理用戶的輸入數據、管理文件系統中的文件列表等。例如，它可以用於創建一個學生成績管理系統，其中每個學生的成績可以存儲在一個Array中。</p>
-                            <p>In practical applications, arrays can be used to store student grades, process user input data, manage file lists in a file system, etc. For example, it can be used to create a student grade management system where the grades of each student can be stored in an array.</p>
                         </div>
                     </div>
                 </div>
