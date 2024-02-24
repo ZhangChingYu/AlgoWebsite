@@ -147,8 +147,8 @@ const ArrayPage = () => {
                             <input defaultValue={initialSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialSize(parseInt(input.target.value))}}}/>
                             <p className="subpage_interact_p">Element Size: </p>
                             <input defaultValue={initialEleSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialEleSize(parseInt(input.target.value))}}}/>
-                            <button className="subpage_btn" onClick={handleCreate}>Create</button>
-                            <button className="subpage_btn" onClick={handleEmpty}>Empty</button>
+                            <button className="subpage_btn" onClick={handleCreate} disabled={insertFlag||removeFlag||searchFlag}>Create</button>
+                            <button className="subpage_btn" onClick={handleEmpty} disabled={insertFlag||removeFlag||searchFlag}>Empty</button>
                         </div>}
                         {state===1&&<div className="array_interact">
                             <p className="subpage_interact_p">Insert Number: </p>
@@ -157,18 +157,18 @@ const ArrayPage = () => {
                             <select value={insertPos} style={{marginLeft:"4px"}} onChange={handleInsertOptionChange}>
                                 {insertOptions}
                             </select>
-                            <button className="subpage_btn" onClick={handleInsert} disabled={insertFlag}>Insert</button>
-                            <button className="subpage_btn" onClick={handleAppend}>Append</button>
+                            <button className="subpage_btn" onClick={handleInsert} disabled={insertFlag||removeFlag||searchFlag}>Insert</button>
+                            <button className="subpage_btn" onClick={handleAppend} disabled={insertFlag||removeFlag||searchFlag}>Append</button>
                         </div>}
                         {state===2&&<div className="array_interact">
                             <p className="subpage_interact_p">Remove Index: </p>
                             <input defaultValue={removeIndex} type="number" onChange={(input)=>{if(input.target.value!==""){setRemoveIndex(parseInt(input.target.value))}}}/>
-                            <button className="subpage_btn" onClick={handleRemove} disabled={removeFlag}>Remove</button>
+                            <button className="subpage_btn" onClick={handleRemove} disabled={insertFlag||removeFlag||searchFlag}>Remove</button>
                         </div>}
                         {state===3&&<div className="array_interact">
                             <p className="subpage_interact_p">Search Element: </p>
                             <input defaultValue={searchVal} type="number" onChange={(input)=>{if(input.target.value!==""){setSearchVal(parseInt(input.target.value))}}}/>
-                            <button className="subpage_btn" onClick={handleSearch} disabled={searchFlag}>Search</button>
+                            <button className="subpage_btn" onClick={handleSearch} disabled={insertFlag||removeFlag||searchFlag}>Search</button>
                         </div>}
                     </div>
                     <div className="array_intro">
