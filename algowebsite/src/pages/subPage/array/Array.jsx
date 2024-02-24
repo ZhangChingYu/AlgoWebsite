@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import './array.css';
 import { CopyRight, ArrayAnim } from '../../../components';
 import Gist from 'react-gist';
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { ArrayIntroP } from '../../../components/array';
 
 const ArrayPage = () => {
     const navigator = useNavigate();
@@ -134,7 +135,7 @@ const ArrayPage = () => {
                             searchVal={searchVal} searchFlag={searchFlag} setSearchFlag={setSearchFlag}/>
                         </div>
                         <div className="subpage_intro">
-
+                            {state===0&&<p>The array size is 8, which means it can contain </p>}
                         </div>
                     </div>
                     <div className="subpage_interact">
@@ -170,8 +171,7 @@ const ArrayPage = () => {
                     <div className="array_intro">
                         <div className="array_intro_section">
                             <h1>定義和基本概念</h1>
-                            <p>Array(數組)是一種數據結構，用於存儲相同類型的元素的集合。每個元素在Array中都有一個唯一的索引，可以通過這個索引來訪問或修改元素。</p>
-                            <p>An array is a data structure used to store a collection of elements of the same type. Each element in the array has a unique index, which can be used to access or modify the element.</p>
+                            <ArrayIntroP/>
                         </div>
                         <div className="array_intro_section">
                             <h1>操作和特性</h1>
@@ -199,9 +199,9 @@ const ArrayPage = () => {
                             </div>
                             <div className="code_holder">
                                 {code===0&&<Gist id="591688d0568f03359f02c3ee207ad0f9"/>}
-                                {code===1&&<Gist id="120aee98a2635a367e1f508e1c70afca"/>}
-                                {code===2&&<Gist id="477bb0ba05499ecd0df7013f2204824d"/>}
-                                {code===3&&<Gist id="9914ccb51d7d98794f5d2ea7e637e9b6"/>}
+                                {code===1&&<Gist id="120aee98a2635a367e1f508e1c70afca" />}
+                                {code===2&&<Gist id="477bb0ba05499ecd0df7013f2204824d" />}
+                                {code===3&&<Gist id="9914ccb51d7d98794f5d2ea7e637e9b6" />}
                             </div>
                         </div>
                         <div className="array_intro_section">
