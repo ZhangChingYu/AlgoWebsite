@@ -1,0 +1,44 @@
+.linkedList_options_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-en);
+    color: var(--color-green);
+    font-size: 20px;
+    text-align: center;
+    cursor: default;
+}
+
+.linkedList_options_wrap p {
+    margin: 10px 0 0 0;
+}
+
+.linkedList_options{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.linkedList_option {
+    flex:1;
+    margin: 10px;
+    background-color: var(--color-green-4);
+    padding: 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.linkedList_option:hover {
+    scale: 1.02;
+    background-color: var(--color-green-3);
+}
+
+.linkedList_option:hover:active {
+    scale: 0.95;
+    color: white;
+}
