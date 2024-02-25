@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import './array.css';
-import { CopyRight, ArrayAnim } from '../../../components';
+import { CopyRight, ArrayAnim, GoBackBtn } from '../../../components';
 import Gist from 'react-gist';
-import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import { ArrayIntroP, ArrayEmplP } from '../../../components/array';
 
 const ArrayPage = () => {
-    const navigator = useNavigate();
 
     const [state, setState] = useState(0);
     const [code, setCode] = useState(0);
@@ -114,9 +111,7 @@ const ArrayPage = () => {
     return(
         <div className="subpage">
             <div className="subpage_content">
-                <div className="goBack">
-                    <FaArrowLeft className="arrow_back" size={30} onClick={()=>{navigator("/")}}/>
-                </div>
+                <GoBackBtn />
                 <div className="subpage_header">
                     <h1>Array</h1>
                 </div>
@@ -142,7 +137,7 @@ const ArrayPage = () => {
                         </div>
                     </div>
                     <div className="subpage_interact">
-                        {state===0&&<div className="array_interact">
+                        {state===0&&<div className="subpage_interact_section">
                             <p className="subpage_interact_p">Initial Size: </p>
                             <input defaultValue={initialSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialSize(parseInt(input.target.value))}}}/>
                             <p className="subpage_interact_p">Element Size: </p>
@@ -150,7 +145,7 @@ const ArrayPage = () => {
                             <button className="subpage_btn" onClick={handleCreate} disabled={insertFlag||removeFlag||searchFlag}>Create</button>
                             <button className="subpage_btn" onClick={handleEmpty} disabled={insertFlag||removeFlag||searchFlag}>Empty</button>
                         </div>}
-                        {state===1&&<div className="array_interact">
+                        {state===1&&<div className="subpage_interact_section">
                             <p className="subpage_interact_p">Insert Number: </p>
                             <input defaultValue={insertVal} type="number" onChange={(input)=>{if(input.target.value!==""){setInsertVal(parseInt(input.target.value))}}} />
                             <p className="subpage_interact_p">Position: </p>
@@ -160,27 +155,27 @@ const ArrayPage = () => {
                             <button className="subpage_btn" onClick={handleInsert} disabled={insertFlag||removeFlag||searchFlag}>Insert</button>
                             <button className="subpage_btn" onClick={handleAppend} disabled={insertFlag||removeFlag||searchFlag}>Append</button>
                         </div>}
-                        {state===2&&<div className="array_interact">
+                        {state===2&&<div className="subpage_interact_section">
                             <p className="subpage_interact_p">Remove Index: </p>
                             <input defaultValue={removeIndex} type="number" onChange={(input)=>{if(input.target.value!==""){setRemoveIndex(parseInt(input.target.value))}}}/>
                             <button className="subpage_btn" onClick={handleRemove} disabled={insertFlag||removeFlag||searchFlag}>Remove</button>
                         </div>}
-                        {state===3&&<div className="array_interact">
+                        {state===3&&<div className="subpage_interact_section">
                             <p className="subpage_interact_p">Search Element: </p>
                             <input defaultValue={searchVal} type="number" onChange={(input)=>{if(input.target.value!==""){setSearchVal(parseInt(input.target.value))}}}/>
                             <button className="subpage_btn" onClick={handleSearch} disabled={insertFlag||removeFlag||searchFlag}>Search</button>
                         </div>}
                     </div>
-                    <div className="array_intro">
-                        <div className="array_intro_section">
+                    <div className="subpage_intro_wrap">
+                        <div className="subpage_intro_section">
                             <h1>定義和基本概念</h1>
                             <ArrayIntroP/>
                         </div>
-                        <div className="array_intro_section">
+                        <div className="subpage_intro_section">
                             <h1>應用場景</h1>
                             <ArrayEmplP/>
                         </div>
-                        <div className="array_intro_section">
+                        <div className="subpage_intro_section">
                             <h1>代碼示例</h1>
                             <p>這裡提供了代碼示例，演示如何創建、訪問和修改Array中的元素。希望這可以幫助你更好地理解。</p>
                             <div className="language_switcher">
