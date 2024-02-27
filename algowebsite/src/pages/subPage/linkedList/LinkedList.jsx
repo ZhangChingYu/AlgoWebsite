@@ -8,6 +8,25 @@ const LinkedList = () => {
 
     const [initialSize, setInitialSize] = useState(4);
     const [createFlag, setCreageFlag] =useState(false);
+    // for anim
+    const [initSize, setInitSize] = useState(0);
+    const [elemList, setElemList] = useState([]);
+
+    const handleCreate = () => {
+        if(initialSize===""){
+            alert("Please enter numbers only!");
+        }else if(initialSize < 0){
+            alert("Your Initial Size can not be negitive!\nPlease input number larger than 0");
+        }else {
+            const tempList = [];
+            for(let i = 0; i < initialSize; i++){
+                tempList.push(Math.floor(Math.random() * 100) + 1);
+            }
+            setElemList(tempList);
+            setInitSize(initialSize);
+            setCreageFlag(true);
+        }
+    }
 
     return(
         <div className="subpage">
@@ -35,7 +54,7 @@ const LinkedList = () => {
                             
                         </div>
                         <div className="subpage_anim" >
-                            {listType===0&&<SingleListAnim />}
+                            {listType===0&&<SingleListAnim initialSize={initSize} elemList={elemList} createFlag={createFlag} setCreateFlag={setCreageFlag}/>}
                         </div>
                         <div className="subpage_intro">
                             <div className="subpage_intro_section">
@@ -48,7 +67,7 @@ const LinkedList = () => {
                             <div className="subpage_interact_section">
                                 <p className="subpage_interact_p">Initial Size: </p>
                                 <input defaultValue={initialSize} type="number" onChange={(input)=>{if(input.target.value!==""){setInitialSize(parseInt(input.target.value))}}}/>
-                                <button className="subpage_btn">Create</button>
+                                <button className="subpage_btn" onClick={handleCreate} disabled={createFlag}>Create</button>
                             </div>
                         </div>
                     </div>

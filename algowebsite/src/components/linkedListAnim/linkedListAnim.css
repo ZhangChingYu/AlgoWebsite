@@ -3,76 +3,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.single_list_node_ele {
-    background-color: aqua;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-en);
-    cursor: default;
-}
-
-.single_list_node_head {
-    width: 96px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    font-size: 20px;
-}
-
-.single_list_node_head p {
-    margin: 0;
-}
-
-.single_list_node_head div {
-    width: 48px;
-}
-
-.single_list_node{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.single_list_node_data {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    font-size: 24px;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    color: black;
-    background-color: var(--color-yellow-3);
-    border: 4px solid black;
-}
-
-.single_list_node_next {
-    width: 40px;
-    height: 40px;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    border: 4px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.single_list_pointer {
-    position: relative;
-    left: 26px;
-}
-
-.single_list_node_next_to {
-    margin-left: 30px;
-    font-size: 22px;
-    font-family: var(--font-en);
+    overflow-x: scroll;
+    padding-left: 60px;
+    padding-right: 20px;
 }
